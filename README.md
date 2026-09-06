@@ -12,23 +12,6 @@
 
 
 
-<details>
-<summary>Table of Contents</summary>
-
-- [About](#about)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Getting Started](#-getting-started)
-- [Scripts](#-scripts)
-- [Contributing](#-contributing)
-- [Follow Me](#-follow-me)
-- [Deployment](#-deployment)
-- [Give A Star](#-give-a-star)
-- [Star History](#-star-history)
-
-
-</details>
-
 ## About
 
 **KeyBeats** is a free online typing test with **realistic mechanical keyboard sounds** and real-time WPM tracking. Practice with timed tests, word counts, quotes, or zen mode — featuring an interactive on-screen keyboard, satisfying key sounds, and detailed accuracy stats.
@@ -72,21 +55,50 @@ Settings persist in `localStorage`.
 ## 🧰 Getting Started
 
 1. Make sure [Git](https://git-scm.com/downloads) and [Bun](https://bun.sh/) (or Node.js 20+) are installed.
+
 2. Fork this repository and clone **your fork**:
 
-   ```bash
+```bash
    git clone https://github.com/<your-username>/keybeats.git
    cd keybeats
-   ```
+```
 
-3. Install dependencies and start the dev server:
+3. Install dependencies:
 
-   ```bash
+```bash
    bun install
-   bun dev
-   ```
+```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. Set up your database:
+
+   - Create a free account and database at [Turso](https://turso.tech/app)
+   - From your database dashboard, copy the **Database URL** and generate an **Auth Token**
+
+5. Create a `.env.local` file in the project root and add:
+
+```env
+   DATABASE_URL=
+   DATABASE_AUTH_TOKEN=
+
+   TURSO_DATABASE_URL=
+   TURSO_AUTH_TOKEN=
+```
+
+   > **Note:** `DATABASE_URL` and `TURSO_DATABASE_URL` should have the **same value**, and `DATABASE_AUTH_TOKEN` and `TURSO_AUTH_TOKEN` should also match. These are duplicated because different parts of the project read them under different variable names.
+
+6. Push the database schema:
+
+```bash
+   bunx drizzle-kit push
+```
+
+7. Start the dev server:
+
+```bash
+   bun dev
+```
+
+8. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📜 Scripts
 
@@ -112,7 +124,5 @@ Settings persist in `localStorage`.
 
 
 
-## ⭐ Give A Star
 
-If you found this project useful, give it a star to help more people discover it!
 
